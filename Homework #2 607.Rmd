@@ -1,0 +1,55 @@
+---
+title: 'Homework #2 607'
+author: "Jlok17"
+date: "2023-02-05"
+output:
+  pdf_document: default
+  html_document: default
+---
+#### Introduction
+
+Movies are a popular media consumption inlet for many individuals including my friends and peers. As the long age question is What Movie is the Best? I've decided to pick movies that were among my friends some of their favorite movies/genres and see how each them rate against one another. I believe that when creating this table of rankings I will be able to tell which of my friends have good taste in films and which one doesn't based on their relation to my own ranking. 
+
+#### Procedure
+In order to create an access from SQL to Rstudio, I went the approach creating a Local SQL Database on my computer via Microsoft SQL Server Management Studio and the RStudio packages 'RODBC'. I will also show a method in order to calculate a summary/mean when having null values. 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{R}
+#install.packages('RODBC')
+library(RODBC)
+#Open connection to SQL server using a windows ODBC DSN
+
+db_conn <- odbcConnect("LocalDSN", rows_at_time = 1)
+
+#Input the SQL commands inorder to Get the Data that you would want in SQL and set it to a Quote
+sql <- "
+SET NOCOUNT ON;
+      SELECT TOP (1000) [Names]
+      ,[DarkKnight]
+      ,[Interstellar]
+      ,[Gravity]
+      ,[KingKong]
+      ,[Cars3]
+  FROM [SQL_Tutorial].[dbo].[MovieRanking]"
+
+MovieRanking <- sqlQuery(db_conn, sql, stringsAsFactors = FALSE)
+
+
+#Closing Database
+odbcClose(db_conn)
+
+head(MovieRanking)
+print(MovieRanking$Gravity)
+mean(MovieRanking$Gravity)
+#Replacing NA with Usable Data
+meanRev <- mean(MovieRanking$Gravity, na.rm = TRUE)
+print(meanRev)  
+MovieRanking[is.na(MovieRanking$Gravity), "Gravity"] <- meanRev
+print(MovieRanking$Gravity)
+```
+
+#### Conclusion
+
+As seen through the table transformation that was down above. There was a decent bit of movies that weren't seen from many of my friends. So in order to use this data, I figure the best way to have a rolling average of each Movie Score. I decided to take the data that was input already and replace the null Values on the table with the mean to have a way to calculate the mean of each score without missing variance. However, the scores that were used to create the mean wasn't exactly accurate, I figured it was an easier method than to force my friends to watch the missing films.  
