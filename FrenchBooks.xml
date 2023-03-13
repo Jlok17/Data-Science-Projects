@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book>
+        <title>Mastering the Art of French Cooking</title>
+        <author>Julia Child</author>
+        <author>Louisette Bertholle</author>
+        <author>Simone Beck</author>
+        <notes>Classic</notes>
+    </book>
+    <book>
+        <title>The French Laundry Cookbook</title>
+        <author>Thomas Keller</author>
+        <notes>Signature dishes</notes>
+        <notes>Michelin-starred</notes>
+        <notes>high-quality</notes>
+    </book>
+    <book>
+        <title>Essential Pépin: More Than 700 All-Time Favorites from My Life in Food</title>
+        <author>Jacques Pépin</author>
+        <notes>Favorite French recipes</notes>
+        <notes>easy-to-follow</notes>
+    </book>
+</books>
