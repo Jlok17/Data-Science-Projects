@@ -1,0 +1,61 @@
+---
+title: "Week 11 Discussion Data 607"
+author: "Jlok17"
+date: "2023-04-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Your task is to analyze an existing recommender system that you find interesting.  You should:
+
+1. Perform a Scenario Design analysis as described below.  Consider whether it makes sense for your selected recommender system to perform scenario design twice, once for the organization (e.g. Amazon.com) and once for the organization's customers.
+
+2. Attempt to reverse engineer what you can about the site, from the site interface and any available information that you can find on the Internet or elsewhere.
+
+3. Include specific recommendations about how to improve the site's recommendation capabilities going forward. 
+
+4. Create your report using an R Markdown file, and create a discussion thread with a link to the GitHub repo where your Markdown file notebook resides.  You are not expected to need to write code for this discussion assignment.
+
+The recommender system I will be analyzing today will be Linkedin.
+
+## Scenario Design Questions
+
+
+#### Who are the target users?
+
+The target users for linkedin are people looking to find a job or professionally network. 
+
+#### What are their key goals?
+
+The key goal of linkedin is to make recommendations for users about people, jobs, groups, learning/news content, and overall the same qualities of a social media platform. 
+
+#### How can the organization help the users accomplish those goals?
+
+Linkedin can help users accomplish their goals by taking in the data on a person profile and recommending different features of the website to them. An example is their feature "the People You May Know", which suggests potential connections to users based on mutual connections and shared work experience. Another feature that is similar to the previous example is the feature,"Jobs You May Be Interested In". This feature helps suggests job listings based on a user's skills, work history, and job search activity. The system works by analyzing user data to identify patterns of behavior and preferences, such as which job listings a user clicks on or which groups they join to make a recommendation. 
+
+#### Linkedin's Recommender System
+
+One of the many general methodologies that Linkedin uses seems to be Non-linear modeling with Gradient Boosted Decision Trees. This methodology is a type of machine learning algorithm that uses decision trees in order to make prediction and is trying to cascade itself by predicting the error of the previous trees in order to learn from itself. So how this would work is that based on a user's past interaction or applying to certain jobs, this model can predict the likelihood that the user would interact with new content that is being recommended.
+
+Another general methodology would be Entity-level personalization with Generalized Linear Mixed models. This model is used to make personalized recommendation on individual user data. It starts by mixing linear models and generalized linear models and trends in order create a relationship between different types of entities. This can be used in linkedin using the information on a user profile such as their past jobs and industry or even location to recommend jobs that are relevant to general career progression. 
+
+#### Improvements going forward
+
+In order to increase the efficiency of LinkedIn's recommender system, I would recommended that improvements would be made to the framework and user experience. To achieve this, I suggest that LinkedIn tries to incorporate a component for explicit feedback collection. In order to help improve better content analysis, I think different ways to help achieve this would potentially be through short surveys and general retention or click rate to their suggestions. Additionally, I think they can start prioritizing recommendation on different contexts through an algorithms for more accurate recommendations based on the users trend in interest or change in interest through current contexts.
+
+
+
+#### References 
+
+https://www.postbeyond.com/blog/how-linkedin-algorithm-works/#:~:text=The%20LinkedIn%20algorithm%20decides%20what,and%20the%20people%20you%20like.
+
+https://engineering.linkedin.com/blog/2019/04/ai-behind-linkedin-recruiter-search-and-recommendation-systems
+
+https://experts.umn.edu/en/publications/applying-gradient-boosting-decision-trees-to-examine-non-linear-e
+
+https://arxiv.org/pdf/1902.09041.pdf
